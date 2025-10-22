@@ -1,0 +1,28 @@
+{%extends "layout.html"%}
+{%block contenido%}
+
+<form method="post">
+    <div class="mb-3">
+        <h3>Punto 1</h3>
+        <label for="x1" class="form-label">X1:</label>
+        <input type="text" class="form-control"  id="x1" name="x1" placeholder="X1">
+        <label for="y1" class="form-label">Y1:</label>
+        <input type="text" class="form-control"  id="y1" name="y1" placeholder="Y1">
+    </div>
+    <div class="mb-3">
+        <h3>Punto 2</h3>
+        <label for="x2" class="form-label">X2:</label>
+        <input type="text" class="form-control"  id="x2" name="x2" placeholder="X2">
+        <label for="y2" class="form-label">Y2:</label>
+        <input type="text" class="form-control"  id="y2" name="y2" placeholder="Y2">
+    </div>
+    <button type="submit" class="btn btn-primary">Calcular</button>
+</form>
+
+<!-- {%if resultadoDist is not none%}
+{{resultadoDist}}
+{%endif%} -->
+
+resultadoDist: {{resultadoDist}}
+
+{%endblock%}
