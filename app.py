@@ -25,16 +25,21 @@ def resultado():
 
 @app.route("/distancia", methods=['GET', 'POST'])
 def distancia():
-    return render_template('distancia.html')
+    resultadoDist = None
+    if request.method == 'POST':
+        try:
+            x1 = float(request.form.get("x1"))
+            y1 = float(request.form.get("y1"))
+            x2 = float(request.form.get("x2"))
+            y2 = float(request.form.get("y2"))
+            resultadoDist = round(math.sqrt((x2 - x1)**2 + (y2 - y1)**2), 3)
+        except (TypeError, ValueError):
+            resultadoDist = "Por favor, ingresa solo números válidos."
+    return render_template('distancia.html', resultadoDist=resultadoDist)
 
-@app.route("/", methods=['GET', 'POST'])
-def resultadoDist():
-    x1=float(request.form.get("x1"))
-    x2=float(request.form.get("x2"))
-    y1=float(request.form.get("y1"))
-    y2=float(request.form.get("y2"))
-    return "La distancia entre {}, {} y {}, {} es {}".format(x1, y1, x2, y2, math.sqrt((x2-x1)**2 + (y2-y1)**2))
-    
+@app.route("/figuras", methods=['POST', 'GET'])
+def figuras():
+    return render_template('figuras.html')
 
 @app.route('/hola')
 def func():
